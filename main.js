@@ -2,6 +2,26 @@ const categoriesContainer = document.querySelector('.categories');
 const productsContainer = document.querySelector('.products');
 const productDetailsContainer = document.querySelector('.product-details');
 
+const buyButton = document.getElementById('buyButton');
+console.log(buyButton);
+buyButton.addEventListener('click', function() {
+    orderForm.style.display = 'block';
+    console.log("click");
+});
+
+
+const name = document.getElementById('name').value;
+const city = document.getElementById('city').value;
+const post = document.getElementById('post').value;
+const payment = document.getElementById('payment').value;
+const quantity = document.getElementById('quantity').value;
+const comment = document.getElementById('comment').value;
+
+const orderForm = document.getElementById('orderForm');
+orderForm.style.display = 'none';
+const confirmOrder = document.getElementById('confirmOrder');
+const orderInfo = document.getElementById('orderInfo');
+
 const categories = [
     { id: 1, name: 'Книги' },
     { id: 2, name: 'Одяг' },
@@ -68,19 +88,33 @@ const renderProductsDetails = (product) => {
         <h4>${product.name}</h4>
         <div>${product.description}</div>
         <div>${product.price}</div>
-        <button class="btn_buy">Buy</button>
+        <button id="buyButton">Купити</button>
 `;
 
-    productDetailsElement.querySelector('.btn_buy').addEventListener(
-        'click',
-        () => {
-            alert(`Ви купили ${product.name} ${product.description}`);
-            renderProducts();
-            renderProductsDetails();
-        }
-    );
-
     productDetailsContainer.appendChild(productDetailsElement);
+
+    buyButton.addEventListener('click', function() {
+        orderForm.style.display = 'block';
+        console.log(buyButton);
+    });
+
+    confirmOrder.addEventListener('click', function(event) {
+        event.preventDefault();
+
+        if (name && city && post && payment && quantity) {
+            orderInfo.innerHTML = `
+            <h2>Інформація про замовлення</h2>; 
+            <p>ПІБ покупця: ${name}</p>; 
+            <p>Місто: ${city}</p>; 
+            <p>Склад Нової пошти: ${post}</p>; 
+            <p>Спосіб оплати: ${payment}</p>; 
+            <p>Кількість товару: ${quantity}</p>; 
+            <p>Коментар до замовлення: ${comment}</p>`;
+            orderForm.style.display = 'none';
+        } else {
+            alert(`Будь ласка, заповніть всі обов'язкові поля`);
+        }
+    });
 }
 
 renderCategories();
@@ -91,3 +125,4 @@ console.log({
     categories,
     products,
 });
+
