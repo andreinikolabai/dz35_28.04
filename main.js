@@ -82,19 +82,23 @@ const renderProductsDetails = (product) => {
         return;
     }
 
-    const productDetailsElement = document.createElement('div');
+    if (!product) {
+        return;
+    }
+
+    const productDetailsElement = document.createElement("div");
 
     productDetailsElement.innerHTML = `
         <h4>${product.name}</h4>
         <div>${product.description}</div>
         <div>${product.price}</div>
-        <button id="buyButton">Купити</button>
 `;
+    productDetailsElement.appendChild(buyButton);
 
     productDetailsContainer.appendChild(productDetailsElement);
-
-    buyButton.addEventListener('click', function() {
-        orderForm.style.display = 'block';
+    console.log(buyButton);
+    buyButton.addEventListener("click", function () {
+        orderForm.style.display = "block";
         console.log(buyButton);
     });
 
@@ -111,7 +115,8 @@ const renderProductsDetails = (product) => {
             <p>Кількість товару: ${quantity}</p>; 
             <p>Коментар до замовлення: ${comment}</p>`;
             orderForm.style.display = 'none';
-        } else {
+        }
+        else {
             alert(`Будь ласка, заповніть всі обов'язкові поля`);
         }
     });
@@ -125,4 +130,3 @@ console.log({
     categories,
     products,
 });
-
