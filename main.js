@@ -100,6 +100,11 @@ const renderProductsDetails = (product) => {
         if (name && city && post && payment && quantity) {
             orderInfo.innerHTML = `
             <h2>Інформація про замовлення</h2>
+            <h3>Інформація про товар:</h3>
+            <p>Назва товару: ${product.name};</p>
+            <p>Опис товару: ${product.description};</p>
+            <p>Ціна: ${product.price}.</p>
+            <h3>Інформація про доставку:</h3>
             <p>ПІБ покупця: ${name};</p>
             <p>Місто: ${city};</p>
             <p>Склад Нової пошти: ${post};</p>
