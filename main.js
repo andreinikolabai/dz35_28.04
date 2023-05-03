@@ -3,20 +3,6 @@ const productsContainer = document.querySelector('.products');
 const productDetailsContainer = document.querySelector('.product-details');
 
 const buyButton = document.getElementById('buyButton');
-console.log(buyButton);
-buyButton.addEventListener('click', function() {
-    orderForm.style.display = 'block';
-    console.log("click");
-});
-
-
-const name = document.getElementById('name').value;
-const city = document.getElementById('city').value;
-const post = document.getElementById('post').value;
-const payment = document.getElementById('payment').value;
-const quantity = document.getElementById('quantity').value;
-const comment = document.getElementById('comment').value;
-
 const orderForm = document.getElementById('orderForm');
 orderForm.style.display = 'none';
 const confirmOrder = document.getElementById('confirmOrder');
@@ -102,22 +88,27 @@ const renderProductsDetails = (product) => {
         console.log(buyButton);
     });
 
-    confirmOrder.addEventListener('click', function(event) {
+    confirmOrder.addEventListener('click', function (event) {
         event.preventDefault();
+        const name = document.getElementById('name').value;
+        const city = document.getElementById('city').value;
+        const post = document.getElementById('post').value;
+        const payment = document.getElementById('payment').value;
+        const quantity = document.getElementById('quantity').value;
+        const comment = document.getElementById('comment').value;
 
         if (name && city && post && payment && quantity) {
             orderInfo.innerHTML = `
-            <h2>Інформація про замовлення</h2>; 
-            <p>ПІБ покупця: ${name}</p>; 
-            <p>Місто: ${city}</p>; 
-            <p>Склад Нової пошти: ${post}</p>; 
-            <p>Спосіб оплати: ${payment}</p>; 
-            <p>Кількість товару: ${quantity}</p>; 
-            <p>Коментар до замовлення: ${comment}</p>`;
+            <h2>Інформація про замовлення</h2>
+            <p>ПІБ покупця: ${name};</p>
+            <p>Місто: ${city};</p>
+            <p>Склад Нової пошти: ${post};</p>
+            <p>Спосіб оплати: ${payment};</p>
+            <p>Кількість товару: ${quantity};</p>
+            <p>Коментар до замовлення: ${comment}.</p>`
             orderForm.style.display = 'none';
-        }
-        else {
-            alert(`Будь ласка, заповніть всі обов'язкові поля`);
+        } else {
+            alert('Будь ласка, заповніть всі обовязкові поля');
         }
     });
 }
