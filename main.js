@@ -121,6 +121,7 @@ const renderProductsDetails = (product) => {
 renderCategories();
 renderProducts();
 renderProductsDetails();
+
 console.log({
     categories,
     products,
