@@ -112,7 +112,8 @@ const renderProductsDetails = (product) => {
             <p>Кількість товару: ${quantity};</p>
             <p>Коментар до замовлення: ${comment}.</p>`
             orderForm.style.display = 'none';
-        } else {
+        } 
+        else {
             alert('Будь ласка, заповніть всі обовязкові поля');
         }
     });
