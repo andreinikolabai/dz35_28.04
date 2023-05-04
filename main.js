@@ -68,10 +68,6 @@ const renderProductsDetails = (product) => {
         return;
     }
 
-    if (!product) {
-        return;
-    }
-
     const productDetailsElement = document.createElement("div");
 
     productDetailsElement.innerHTML = `
