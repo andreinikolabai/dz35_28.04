@@ -45,7 +45,6 @@ const renderProducts = (categoryId) => {
     if (!categoryId) {
         return;
     }
-
     const filteredProducts = products.filter(product => product.categoryId === categoryId);
 
     filteredProducts.forEach(product => {
